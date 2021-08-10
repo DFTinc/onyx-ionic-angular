@@ -1,0 +1,7 @@
+{
+  "name": "onyx-ionic-angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
