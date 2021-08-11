@@ -12,7 +12,7 @@ dependencies {
     implementation project(':capacitor-app')
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-keyboard')
-    implementation "com.dft.android:onyx-camera:$ONYX_ANDROID_SDK_VERSION"
+    implementation "com.dft.android:onyx-camera:7.1.1"
 }
 
 

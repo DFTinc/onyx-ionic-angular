@@ -318,15 +318,12 @@ allprojects {
 }
 ```
 
-#### Set ONXY_ANDROID_SDK_VERSION
-Reference [Capacitor and the Cordova plugin.xml file](https://eliteionic.com/tutorials/migrating-cordova-plugins-to-capacitor-android/#the-pluginxml-file)
+### iOS
+Add the following to `ios/App/App/Info.plist`
+```
+<key>NSCameraUsageDescription</key>
+<string>This application will use your phone's camera to capture an image of your fingerprint.</string>
+```
 
-Open `android/variables.gradle` and set `ONYX_ANDROID_SDK_VERSION` to update to the latest release (currently defaults to 7.1.1)
-```
-ext {
-    ...
-    ONYX_ANDROID_SDK_VERSION = '7.1.1'
-}
-```
-### Run on an Android device
-Plugin in a hardware Android device and run the app from Android Studio
+### Run on a hardware device
+Plugin in a hardware Android or iOS device and run the app from Android Studio or Xcode.

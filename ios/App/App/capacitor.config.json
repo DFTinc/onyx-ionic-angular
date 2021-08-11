@@ -1,0 +1,6 @@
+{
+	"appId": "com.diamondfortress.onyx.ionic.example.angular",
+	"appName": "onyx-ionic-angular",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
