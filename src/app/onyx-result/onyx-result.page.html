@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Onyx Result</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let onyxResult of onyxResults; index as i">
+    <ion-card-header>
+      <ion-card-subtitle class="ion-text-uppercase">Fingerprint #{{i+1}}
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngIf="onyxResult && onyxResult.rawFingerprintDataUri">
+          <h4>Raw</h4>
+          <img [src]="domSanitizer.bypassSecurityTrustUrl(onyxResult.rawFingerprintDataUri)">
+        </ion-col>
+        <ion-col *ngIf="onyxResult && onyxResult.processedFingerprintDataUri">
+          <h4>Processed</h4>
+          <img [src]="domSanitizer.bypassSecurityTrustUrl(onyxResult.processedFingerprintDataUri)">
+        </ion-col>
+        <ion-col *ngIf="onyxResult && onyxResult.enhancedFingerprintDataUri">
+          <h4>Enhanced</h4>
+          <img [src]="domSanitizer.bypassSecurityTrustUrl(onyxResult.enhancedFingerprintDataUri)">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!--Fingerprint Capture Metrics-->
+    <ion-list no-lines margin-bottom
+              *ngIf="onyxResult && onyxResult.captureMetrics &&
+                onyxResult.captureMetrics.nfiqMetrics && (
+                onyxResult.captureMetrics.nfiqMetrics.nfiqScore ||
+                onyxResult.captureMetrics.nfiqMetrics.mlpScore
+                )"
+    >
+      <ion-list-header color="light" class="ion-text-uppercase">NFIQ Metrics</ion-list-header>
+      <ion-item class="ion-text-wrap">
+        <ion-label>NFIQ Score</ion-label>
+        <div item-right>{{onyxResult.captureMetrics.nfiqMetrics.nfiqScore}}</div>
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <ion-label>MLP Score</ion-label>
+        <div item-right>{{onyxResult.captureMetrics.nfiqMetrics.mlpScore}}</div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-list no-lines *ngIf="onyxResults && onyxResults.length && onyxResults[0].captureMetrics">
+    <ion-list-header color="light" class="ion-text-uppercase">Capture Metrics</ion-list-header>
+    <ion-item text-wrap *ngIf="onyxResults[0].captureMetrics.livenessConfidence != -1">
+      <ion-label>Liveness Confidence</ion-label>
+      <div item-right>
+        {{onyxResults[0].captureMetrics.livenessConfidence}}
+      </div>
+    </ion-item>
+    <ion-item text-wrap *ngIf="onyxResults[0].captureMetrics.focusQuality">
+      <ion-label>Focus Quality</ion-label>
+      <div item-right>
+        {{onyxResults[0].captureMetrics.focusQuality}}
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

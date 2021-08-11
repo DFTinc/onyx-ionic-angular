@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">onyx-ionic-angular</string>
+    <string name="title_activity_main">onyx-ionic-angular</string>
+    <string name="package_name">com.diamondfortress.onyx.ionic.example.angular</string>
+    <string name="custom_url_scheme">com.diamondfortress.onyx.ionic.example.angular</string>
+</resources>

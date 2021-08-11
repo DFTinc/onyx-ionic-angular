@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'onyx-result',
+    loadChildren: () => import('./onyx-result/onyx-result.module').then( m => m.OnyxResultPageModule)
+  },
 ];
 
 @NgModule({
